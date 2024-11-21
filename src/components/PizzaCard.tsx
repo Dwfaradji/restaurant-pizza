@@ -10,7 +10,7 @@ interface PizzaCardProps {
     onClick: (pizza: Pizza) => void;
 }
 
-const PizzaCard: React.FC<PizzaCardProps> = ({ pizza, onClick }) => {
+const PizzaCard: React.FC<PizzaCardProps> = ({ pizza }) => {
     const { addPizza } = useCart(); // Accéder à la fonction d'ajout au panier
     return (
         <div

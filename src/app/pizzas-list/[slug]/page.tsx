@@ -31,7 +31,7 @@ export default function PizzaDetails() {
         return (
             <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-red-500 to-orange-500 text-white">
                 <h1 className="text-5xl font-extrabold mb-4">Pizza introuvable</h1>
-                <p className="text-lg opacity-90">La pizza que vous recherchez est introuvable ou n'existe plus.</p>
+                <p className="text-lg opacity-90">{"La pizza que vous recherchez est introuvable ou n'existe plus."}</p>
                 <Link
                     href="/"
                     className="mt-6 px-6 py-3 bg-white text-red-600 font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform"
