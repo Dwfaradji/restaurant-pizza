@@ -1,10 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Pizza } from "@/data/pizzas";
 import PizzaCard from "@/components/PizzaCard";
-import Popup from "@/components/Popup";
-import CartSummary from "@/components/CartSummary";
+
 import { cardTomate, cardCream } from "@/data/pizzas";
 import { useSearchParams } from "next/navigation";
 
@@ -19,39 +17,12 @@ export default function PizzasList() {
     // État pour le triage
     const [filter, setFilter] = useState<string>(initialFilter);
 
-    // État pour la gestion du panier et de la pop-up
-    const [selectedPizzas, setSelectedPizzas] = useState<Pizza[]>([]);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [currentPizza, setCurrentPizza] = useState<Pizza | null>(null);
-
-    // Calculer le total du panier
-    const total = selectedPizzas.reduce((acc, pizza) => acc + pizza.price, 0);
-
     // Filtrage des pizzas
     const filteredPizzas = allPizzas.filter((pizza) => {
         if (filter === "Tomate") return pizza.base === "Tomate";
         if (filter === "Crème fraîche") return pizza.base === "Crème fraîche";
         return true; // Afficher toutes les pizzas
     });
-
-    // Gérer le clic sur une pizza pour afficher la pop-up
-    const handlePizzaClick = (pizza: Pizza) => {
-        setCurrentPizza(pizza);
-        setIsPopupOpen(true);
-    };
-
-    // Ajouter une pizza au panier
-    const addPizzaToOrder = () => {
-        if (currentPizza) {
-            setSelectedPizzas((prev) => [...prev, currentPizza]);
-            setIsPopupOpen(false);
-        }
-    };
-
-    // Réinitialiser le panier
-    const resetOrder = () => {
-        setSelectedPizzas([]);
-    };
 
     // Met à jour le filtre initial au chargement
     useEffect(() => {
@@ -95,17 +66,9 @@ export default function PizzasList() {
             {/* Affichage des pizzas filtrées */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredPizzas.map((pizza) => (
-                    <PizzaCard key={pizza.slug} pizza={pizza} onClick={handlePizzaClick} />
+                    <PizzaCard key={pizza.slug} pizza={pizza}  />
                 ))}
             </div>
-
-            {/* Résumé de la commande */}
-            <CartSummary selectedPizzas={selectedPizzas} total={total} onReset={resetOrder} />
-
-            {/* Pop-up */}
-            {isPopupOpen && currentPizza && (
-                <Popup pizza={currentPizza} onClose={() => setIsPopupOpen(false)} onAdd={addPizzaToOrder} />
-            )}
         </div>
     );
 }

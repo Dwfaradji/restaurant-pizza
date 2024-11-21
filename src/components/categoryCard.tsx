@@ -11,7 +11,7 @@ interface CategoryCardProps {
     base: string;
 }
 
-const CategoryCard = ({ href, image, title, description, base }: CategoryCardProps) => {
+const CategoryCard = ({ href, title, description, base }: CategoryCardProps) => {
     return (
         <Link
             href={{

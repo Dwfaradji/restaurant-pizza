@@ -18,7 +18,7 @@ export default function Home() {
                         <div className="md:w-1/2">
                             <h1 className="text-5xl md:text-7xl font-extrabold text-orange-600 leading-tight">
                                 La pizza, <br />
-                                c'est notre passion.
+                                {"c'est notre passion."}
                             </h1>
                             <p className="mt-6 text-lg md:text-xl text-gray-700 font-light">
                                 Découvrez une expérience culinaire unique, avec des ingrédients frais
@@ -88,7 +88,7 @@ export default function Home() {
                 <div className="container mx-auto px-6 text-center">
                     <h2 className="text-4xl font-bold">Prêts à commander votre pizza ?</h2>
                     <p className="mt-4 text-lg font-light">
-                        Passez votre commande maintenant et profitez d'une expérience unique.
+                        {"Passez votre commande maintenant et profitez d'une expérience unique."}
                     </p>
                     <Link
                         href={"tel:06060606"}
