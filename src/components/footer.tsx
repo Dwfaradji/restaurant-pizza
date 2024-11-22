@@ -19,7 +19,7 @@ const Footer = () => {
           <div>
             <h3 className="text-white text-lg font-bold mb-4">
               <ClockIcon className="inline-block w-5 h-5 text-orange-500 mr-2" />
-              Horaires d'ouverture
+              {"Horaires d'ouverture"}
             </h3>
             <ul className="space-y-2">
               <li className="flex justify-between">
@@ -85,8 +85,8 @@ const Footer = () => {
           </p>
           <p className="mt-4 text-gray-500 text-sm">
             Conçu avec{' '}
-            <HeartIcon className="inline-block w-5 h-5 text-red-500" /> par
-            l'équipe Delizia.
+            <HeartIcon className="inline-block w-5 h-5 text-red-500" />
+            {`par l'équipe Delizia.`}
           </p>
         </div>
         {/* Section inférieure */}

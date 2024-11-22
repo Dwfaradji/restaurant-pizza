@@ -6,7 +6,6 @@ import Footer from '@/components/footer';
 import { CartProvider } from '@/context/CardContext';
 import CartSummary from '@/components/CartSummary';
 import React from 'react';
-import StoreStatus from '@/components/StoreStatus';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
