@@ -6,6 +6,7 @@ import Link from "next/link";
 import {useEffect, useState} from "react";
 import {useCart} from "@/context/CardContext";
 import {useParams} from "next/navigation";
+import {PlusCircleIcon,ArrowLeftCircleIcon} from "@heroicons/react/24/solid";
 
 export default function PizzaDetails() {
 
@@ -20,12 +21,6 @@ export default function PizzaDetails() {
     }, [slug]);
     const { addPizza } = useCart  (); // Accéder à la fonction d'ajout au panier
     // État pour gérer le panier
-    const [selectedPizzas] = useState<Pizza[]>([]);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-
-    // Calculer le total des pizzas dans le panier
-    const total = selectedPizzas.reduce((acc, pizza) => acc + pizza.price, 0);
 
     if (!pizza) {
         return (
@@ -89,40 +84,23 @@ export default function PizzaDetails() {
                 </div>
                 {/* Boutons */}
                 <div className="px-8 py-6 bg-gray-50 text-center justify-between flex">
-                    <button
-                        onClick={() => addPizza(pizza)} // Ajouter la pizza au panier
-                        className="inline-block px-8 py-3 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition-transform"
-                    >
-                        Ajouter au panier
-                    </button>
                     <Link
                         href="/pizzas-list"
                         className="inline-block px-8 py-3 bg-red-500 text-white font-bold rounded-lg shadow-lg hover:bg-red-600 hover:scale-105 transition-transform"
                     >
-                        Retour à la liste
+                        <ArrowLeftCircleIcon className="w-5 h-5" />
                     </Link>
+                    <button
+                        onClick={() => addPizza(pizza)} // Ajouter la pizza au panier
+                        className="inline-block px-8 py-3 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition-transform"
+                    >
+                 <PlusCircleIcon className="w-5 h-5" />
+                    </button>
                 </div>
             </div>
             <PizzaSuggestions base={pizza.base}/>
 
-            {/* Pop-up de confirmation */}
-            {isPopupOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                    <div className="bg-white p-6 rounded-lg shadow-lg text-center w-96">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Pizza ajoutée au panier</h3>
-                        <p className="text-lg text-gray-700 mb-4">
-                            Vous avez ajouté <strong>{pizza.title}</strong> à votre panier.
-                        </p>
-                        <p className="text-lg text-gray-800 mb-4 font-bold">Total actuel : {total}€</p>
-                        <button
-                            onClick={() => setIsPopupOpen(false)}
-                            className="bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400"
-                        >
-                            Fermer
-                        </button>
-                    </div>
-                </div>
-            )}
+
         </div>
     );
 }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Pizza } from "@/data/pizzas";
 import Link from "next/link";
 import {useCart} from "@/context/CardContext";
+import {PlusCircleIcon, ShoppingCartIcon} from "@heroicons/react/24/solid";
 
 interface PizzaCardProps {
     pizza: Pizza;
@@ -30,9 +31,9 @@ const PizzaCard: React.FC<PizzaCardProps> = ({ pizza }) => {
             </Link>
             <button
                 onClick={() => addPizza(pizza)} // Ajouter la pizza au panier
-                className="inline-block px-8 py-3 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition-transform"
+                className="inline-block px-8 absolute top-0 right-0 py-3 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition-transform"
             >
-                Ajouter au panier
+               <PlusCircleIcon className="w-5 h-5" />
             </button>
         </div>
     );

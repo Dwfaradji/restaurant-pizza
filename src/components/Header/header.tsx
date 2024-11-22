@@ -30,7 +30,7 @@ const Header = () => {
 
     return (
         <header className="w-full p-4 px-5 sm:px-10 flex items-center justify-between">
-            <Logo />
+            <Logo/>
 
             {/* Bouton Hamburger */}
             <button
@@ -86,12 +86,13 @@ const Header = () => {
                     )}
                     aria-label="theme-switcher"
                 >
-                    {mode === "light" ? <MoonIcon className="fill-dark" /> : <SunIcon className="fill-dark" />}
+                    {mode === "light" ? <MoonIcon className="fill-dark"/> : <SunIcon className="fill-dark"/>}
                 </button>
             </nav>
 
             {/* Navigation Desktop */}
-            <nav className="w-max py-3 px-8 border border-solid border-dark rounded-full font-medium capitalize items-center hidden sm:flex fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50">
+            <nav
+                className="w-max py-3 px-8 border border-solid border-dark rounded-full font-medium capitalize items-center hidden sm:flex fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50">
                 <Link href="/" className="mr-2">
                     Accueil
                 </Link>
@@ -109,18 +110,18 @@ const Header = () => {
                     )}
                     aria-label="theme-switcher"
                 >
-                    {mode === "light" ? <MoonIcon className="fill-dark" /> : <SunIcon className="fill-dark" />}
+                    {mode === "light" ? <MoonIcon className="fill-dark"/> : <SunIcon className="fill-dark"/>}
                 </button>
             </nav>
 
             {/* Réseaux Sociaux */}
             <div className="hidden sm:flex items-center">
                 {[
-                    { href: siteMetadata.linkedin, label: "LinkedIn", icon: LinkedinIcon },
-                    { href: siteMetadata.twitter, label: "Twitter", icon: TwitterIcon },
-                    { href: siteMetadata.github, label: "GitHub", icon: GithubIcon },
-                    { href: siteMetadata.dribbble, label: "Dribbble", icon: DribbbleIcon },
-                ].map(({ href, label, icon: Icon }) => (
+                    {href: siteMetadata.linkedin, label: "LinkedIn", icon: LinkedinIcon},
+                    {href: siteMetadata.twitter, label: "Twitter", icon: TwitterIcon},
+                    {href: siteMetadata.github, label: "GitHub", icon: GithubIcon},
+                    {href: siteMetadata.dribbble, label: "Dribbble", icon: DribbbleIcon},
+                ].map(({href, label, icon: Icon}) => (
                     <a
                         key={label}
                         href={href}
@@ -129,7 +130,7 @@ const Header = () => {
                         aria-label={`Reach out to me via ${label}`}
                         target="_blank"
                     >
-                        <Icon className="hover:scale-125 transition-all ease duration-200" />
+                        <Icon className="hover:scale-125 transition-all ease duration-200"/>
                     </a>
                 ))}
             </div>

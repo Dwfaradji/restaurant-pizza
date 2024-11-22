@@ -22,7 +22,6 @@ const CategoryCard = ({ href, title, description, base }: CategoryCardProps) => 
         >
             <Image
                 src={imagesHeader}
-
                 alt={title}
                 width={400}
                 height={300}
