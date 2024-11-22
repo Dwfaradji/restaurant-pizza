@@ -14,7 +14,7 @@ const Logo = () => {
           priority
         />
       </div>
-      <span className="font-bold dark:font-semibold text-lg md:text-xl">
+      <span className="font-bold dark:font-semibold text-lg md:text-xl hidden sm:flex">
         Étoile Normande
       </span>
     </Link>

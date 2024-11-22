@@ -1,19 +1,20 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
 import {
-  DribbbleIcon,
-  GithubIcon,
-  LinkedinIcon,
+  // DribbbleIcon,
+  // GithubIcon,
+  // LinkedinIcon,
   MoonIcon,
   SunIcon,
-  TwitterIcon,
+  // TwitterIcon,
 } from '../Icons';
-import siteMetadata from '@/utils/siteMetaData';
+// import siteMetadata from '@/utils/siteMetaData';
 import { useThemeSwitch } from '@/Hooks/useThemeSwitch';
 import { cx } from '@/utils';
+import StoreStatus from '@/components/StoreStatus';
 
 const Header = () => {
   const [isClient, setIsClient] = useState(false);
@@ -35,7 +36,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full p-4 px-5 sm:px-10 flex items-center justify-between">
+    <header className="w-full p-1 flex items-center justify-between">
       <Logo />
 
       {/* Bouton Hamburger */}
@@ -75,7 +76,7 @@ const Header = () => {
       {/* Navigation Mobile */}
       <nav
         className={cx(
-          'w-max py-3 px-6 sm:px-8 border border-solid border-dark rounded-full font-medium capitalize items-center flex sm:hidden fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50 transition-all ease duration-300',
+          'w-max py-3 px-6 sm:px-8 border border-solid border-dark rounded-full font-medium capitalize items-center flex sm:hidden fixed top-4 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50 transition-all ease duration-300',
           click ? 'top-6' : '-top-20'
         )}
       >
@@ -130,35 +131,37 @@ const Header = () => {
           )}
         </button>
       </nav>
-
-      {/* Réseaux Sociaux */}
-      <div className="hidden sm:flex items-center">
-        {[
-          {
-            href: siteMetadata.linkedin,
-            label: 'LinkedIn',
-            icon: LinkedinIcon,
-          },
-          { href: siteMetadata.twitter, label: 'Twitter', icon: TwitterIcon },
-          { href: siteMetadata.github, label: 'GitHub', icon: GithubIcon },
-          {
-            href: siteMetadata.dribbble,
-            label: 'Dribbble',
-            icon: DribbbleIcon,
-          },
-        ].map(({ href, label, icon: Icon }) => (
-          <a
-            key={label}
-            href={href}
-            rel="noopener noreferrer"
-            className="inline-block w-6 h-6 mr-4"
-            aria-label={`Reach out to me via ${label}`}
-            target="_blank"
-          >
-            <Icon className="hover:scale-125 transition-all ease duration-200" />
-          </a>
-        ))}
+      <div className="flex items-center">
+        <StoreStatus />
       </div>
+      {/* Réseaux Sociaux */}
+      {/*<div className="hidden sm:flex items-center">*/}
+      {/*  {[*/}
+      {/*    {*/}
+      {/*      href: siteMetadata.linkedin,*/}
+      {/*      label: 'LinkedIn',*/}
+      {/*      icon: LinkedinIcon,*/}
+      {/*    },*/}
+      {/*    { href: siteMetadata.twitter, label: 'Twitter', icon: TwitterIcon },*/}
+      {/*    { href: siteMetadata.github, label: 'GitHub', icon: GithubIcon },*/}
+      {/*    {*/}
+      {/*      href: siteMetadata.dribbble,*/}
+      {/*      label: 'Dribbble',*/}
+      {/*      icon: DribbbleIcon,*/}
+      {/*    },*/}
+      {/*  ].map(({ href, label, icon: Icon }) => (*/}
+      {/*    <a*/}
+      {/*      key={label}*/}
+      {/*      href={href}*/}
+      {/*      rel="noopener noreferrer"*/}
+      {/*      className="inline-block w-6 h-6 mr-4"*/}
+      {/*      aria-label={`Reach out to me via ${label}`}*/}
+      {/*      target="_blank"*/}
+      {/*    >*/}
+      {/*      <Icon className="hover:scale-125 transition-all ease duration-200" />*/}
+      {/*    </a>*/}
+      {/*  ))}*/}
+      {/*</div>*/}
     </header>
   );
 };
