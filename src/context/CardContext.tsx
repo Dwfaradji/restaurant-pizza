@@ -20,7 +20,9 @@ type CartPizza = Pizza & {
 type CartContextType = {
   selectedPizzas: CartPizza[];
   total: number;
+  // eslint-disable-next-line no-unused-vars
   addPizza: (pizza: CartPizza) => void;
+  // eslint-disable-next-line no-unused-vars
   removePizza: (slug: string, selectedSize: keyof Pizza['price']) => void;
   resetCart: () => void;
 };

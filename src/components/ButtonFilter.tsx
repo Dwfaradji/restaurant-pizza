@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 interface ButtonFilterProps {
   btnName: { btn1: string; btn2: string; btn3: string };
   filter: string;
+  // eslint-disable-next-line no-unused-vars
   setFilter: (filter: string) => void; // Fonction pour définir le filtre
   filterName: { name1: string; name2: string; name3: string };
 }
