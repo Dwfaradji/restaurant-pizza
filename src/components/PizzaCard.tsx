@@ -34,26 +34,26 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
   };
 
   return (
-    <div className="relative bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer">
+    <div className="relative cursor-pointer overflow-hidden rounded-lg bg-white shadow-lg transition-shadow hover:shadow-xl">
       <Link key={pizza.slug} href={`/pizzas-details/${pizza.slug}`}>
         <Image
           src={pizza.image}
           alt={pizza.title}
           width={300}
           height={200}
-          className="w-full h-40 object-cover"
+          className="h-40 w-full object-cover"
         />
         <div className="p-4">
           <h3 className="text-lg font-semibold text-gray-800">{pizza.title}</h3>
-          <p className="text-sm text-gray-600 truncate">{pizza.description}</p>
+          <p className="truncate text-sm text-gray-600">{pizza.description}</p>
         </div>
       </Link>
-      <div className="flex justify-between items-center px-4 py-2">
+      <div className="flex items-center justify-between px-4 py-2">
         {/* Boutons pour changer de taille */}
         <div className="flex space-x-2">
           <button
             onClick={() => handleSizeChange('petite')}
-            className={`px-4 py-2 rounded-lg font-bold ${
+            className={`rounded-lg px-4 py-2 font-bold ${
               selectedSize === 'petite'
                 ? 'bg-orange-500 text-white'
                 : 'bg-gray-200 text-gray-700'
@@ -63,7 +63,7 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
           </button>
           <button
             onClick={() => handleSizeChange('grande')}
-            className={`px-4 py-2 rounded-lg font-bold ${
+            className={`rounded-lg px-4 py-2 font-bold ${
               selectedSize === 'grande'
                 ? 'bg-orange-500 text-white'
                 : 'bg-gray-200 text-gray-700'
@@ -73,16 +73,16 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
           </button>
         </div>
         {/* Afficher le prix en fonction de la taille sélectionnée */}
-        <p className="text-lg font-semibold text-gray-800 ">
+        <p className="text-lg font-semibold text-gray-800">
           Prix : {updatePrice}€
         </p>
 
         {/* Bouton pour ajouter au panier */}
         <button
           onClick={handleAddPizza}
-          className="absolute top-0 right-0 px-6 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition-colors"
+          className="absolute right-0 top-0 rounded-lg bg-green-500 px-6 py-2 font-bold text-white transition-colors hover:bg-green-600"
         >
-          <PlusCircleIcon className="w-5 h-5" />
+          <PlusCircleIcon className="size-5" />
         </button>
       </div>
     </div>

@@ -55,14 +55,14 @@ export default function PizzaDetails() {
   // Affichage d'un message d'erreur si la pizza est introuvable
   if (!pizza) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-red-500 to-orange-500 text-white">
-        <h1 className="text-5xl font-extrabold mb-4">Pizza introuvable</h1>
+      <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-br from-red-500 to-orange-500 text-white">
+        <h1 className="mb-4 text-5xl font-extrabold">Pizza introuvable</h1>
         <p className="text-lg opacity-90">
           {"La pizza que vous recherchez est introuvable ou n'existe plus."}
         </p>
         <Link
           href="/"
-          className="mt-6 px-6 py-3 bg-white text-red-600 font-semibold rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-transform"
+          className="mt-6 rounded-lg bg-white px-6 py-3 font-semibold text-red-600 shadow-lg transition-transform hover:scale-105 hover:shadow-xl"
         >
           Retour au menu
         </Link>
@@ -84,44 +84,44 @@ export default function PizzaDetails() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 py-10">
       {/* Carte principale */}
-      <div className="container mx-auto max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-300">
+      <div className="container mx-auto max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
         {/* Image */}
         <Image
           src={pizza.image}
           alt={pizza.title}
           width={800}
           height={400}
-          className="w-full h-80 object-cover"
+          className="h-80 w-full object-cover"
           priority
         />
-        <div className="p-8 md:flex md:justify-between md:items-start space-y-8 md:space-y-0">
+        <div className="space-y-8 p-8 md:flex md:items-start md:justify-between md:space-y-0">
           {/* Informations principales */}
           <div className="md:w-2/3">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-6 leading-tight">
+            <h1 className="mb-6 text-4xl font-extrabold leading-tight text-gray-800 md:text-5xl">
               {pizza.title}
             </h1>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+            <p className="mb-6 text-lg leading-relaxed text-gray-600">
               {pizza.description}
             </p>
 
             {/* Ingrédients */}
             <div className="mb-6">
-              <strong className="block text-gray-800 font-semibold text-lg mb-2">
+              <strong className="mb-2 block text-lg font-semibold text-gray-800">
                 Ingrédients :
               </strong>
               <p className="text-gray-600">{pizza.ingredients}</p>
             </div>
 
-            <div className=" gap-4 mb-6">
-              <p className="text-lg hidden">
-                <strong className="text-gray-800 font-semibold">
+            <div className="mb-6 gap-4">
+              <p className="hidden text-lg">
+                <strong className="font-semibold text-gray-800">
                   Dimensions :
                 </strong>{' '}
                 {pizza.dimensions}
               </p>
 
               <p className="text-lg text-gray-600">
-                <strong className="text-gray-800 font-semibold">Base :</strong>{' '}
+                <strong className="font-semibold text-gray-800">Base :</strong>{' '}
                 {pizza.base}
               </p>
             </div>
@@ -130,7 +130,7 @@ export default function PizzaDetails() {
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => handleSizeChange('petite')}
-                className={`px-5 py-2 rounded-lg text-sm font-bold transition ${
+                className={`rounded-lg px-5 py-2 text-sm font-bold transition ${
                   selectedSize === 'petite'
                     ? 'bg-orange-500 text-white shadow-md'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -140,7 +140,7 @@ export default function PizzaDetails() {
               </button>
               <button
                 onClick={() => handleSizeChange('grande')}
-                className={`px-5 py-2 rounded-lg text-sm font-bold transition ${
+                className={`rounded-lg px-5 py-2 text-sm font-bold transition ${
                   selectedSize === 'grande'
                     ? 'bg-orange-500 text-white shadow-md'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -148,9 +148,9 @@ export default function PizzaDetails() {
               >
                 Grande
               </button>
-              <p className="text-lg font-semibold text-gray-800 ">
+              <p className="text-lg font-semibold text-gray-800">
                 Prix :{' '}
-                <span className="text-orange-500 font-bold">
+                <span className="font-bold text-orange-500">
                   {updatePrice}€
                 </span>
               </p>
@@ -158,11 +158,11 @@ export default function PizzaDetails() {
           </div>
 
           {/* Options disponibles */}
-          <div className="md:w-1/3 flex flex-col items-center justify-center bg-gradient-to-br from-orange-50 to-yellow-100 rounded-2xl p-6 shadow-lg">
-            <h2 className="text-2xl font-semibold text-orange-600 mb-4">
+          <div className="flex flex-col items-center justify-center rounded-2xl bg-gradient-to-br from-orange-50 to-yellow-100 p-6 shadow-lg md:w-1/3">
+            <h2 className="mb-4 text-2xl font-semibold text-orange-600">
               Options Disponibles
             </h2>
-            <ul className="list-disc list-inside text-gray-700 space-y-3 text-base">
+            <ul className="list-inside list-disc space-y-3 text-base text-gray-700">
               <li>
                 <strong>Crust :</strong> {pizza.options.crust.join(', ')}
               </li>
@@ -171,7 +171,7 @@ export default function PizzaDetails() {
                 {pizza.options.extraToppings.join(', ')}
               </li>
             </ul>
-            <h2 className="text-2xl font-semibold text-orange-600 my-4">
+            <h2 className="my-4 text-2xl font-semibold text-orange-600">
               Infos nutritionnelles
             </h2>
             <CalorieProgress
@@ -182,19 +182,19 @@ export default function PizzaDetails() {
         </div>
 
         {/* Boutons d'action */}
-        <div className="px-8 py-6 bg-gray-50 flex justify-between items-center">
+        <div className="flex items-center justify-between bg-gray-50 px-8 py-6">
           <Link
             href={`/pizzas-list/${url()}`}
-            className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white font-bold rounded-lg shadow-lg hover:bg-red-600 hover:scale-105 transition-transform"
+            className="flex items-center gap-2 rounded-lg bg-red-500 px-6 py-3 font-bold text-white shadow-lg transition-transform hover:scale-105 hover:bg-red-600"
           >
-            <ArrowLeftCircleIcon className="w-5 h-5" />
+            <ArrowLeftCircleIcon className="size-5" />
             Retour
           </Link>
           <button
             onClick={handleAddPizza}
-            className="flex items-center gap-2 px-6 py-3 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition-transform"
+            className="flex items-center gap-2 rounded-lg bg-orange-500 px-6 py-3 font-bold text-white shadow-lg transition-transform hover:scale-105 hover:bg-orange-600"
           >
-            <PlusCircleIcon className="w-5 h-5" />
+            <PlusCircleIcon className="size-5" />
             Ajouter
           </button>
         </div>

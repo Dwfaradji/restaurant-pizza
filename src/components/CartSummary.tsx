@@ -62,18 +62,18 @@ export default function CartSummary() {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-controls="cart-dropdown"
-        className="flex items-center justify-between w-full bg-gray-800 text-white py-2 px-4 rounded-lg shadow-lg"
+        className="flex w-full items-center justify-between rounded-lg bg-gray-800 px-4 py-2 text-white shadow-lg"
       >
         <div className="flex items-center">
-          <ShoppingCartIcon className="h-5 w-5 mr-2" />
+          <ShoppingCartIcon className="mr-2 size-5" />
           <span className="font-semibold">Panier</span>
         </div>
         <div className="flex items-center">
-          <span className="font-semibold mr-2">{total}€</span>
+          <span className="mr-2 font-semibold">{total}€</span>
           {isOpen ? (
-            <ChevronUpIcon className="h-5 w-5" />
+            <ChevronUpIcon className="size-5" />
           ) : (
-            <ChevronDownIcon className="h-5 w-5" />
+            <ChevronDownIcon className="size-5" />
           )}
         </div>
       </button>
@@ -82,18 +82,18 @@ export default function CartSummary() {
       {isOpen && (
         <div
           id="cart-dropdown"
-          className="mt-2 bg-white shadow-lg rounded-lg p-4 w-full max-h-96 overflow-y-auto"
+          className="mt-2 max-h-96 w-full overflow-y-auto rounded-lg bg-white p-4 shadow-lg"
         >
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">
+          <h3 className="mb-4 text-lg font-semibold text-gray-800">
             Détails du Panier
           </h3>
           {groupedPizzas.length > 0 ? (
             <>
-              <ul className="text-sm text-gray-600 mb-4">
+              <ul className="mb-4 text-sm text-gray-600">
                 {groupedPizzas.map((pizza) => (
                   <li
                     key={`${pizza.slug}-${pizza.selectedSize}`}
-                    className="flex justify-between items-center mb-2"
+                    className="mb-2 flex items-center justify-between"
                   >
                     <div>
                       <span className="font-semibold">{pizza.title}</span> -{' '}
@@ -113,7 +113,7 @@ export default function CartSummary() {
                           pizza.selectedSize as keyof Pizza['price']
                         )
                       }
-                      className="text-red-500 text-sm font-bold"
+                      className="text-sm font-bold text-red-500"
                     >
                       Retirer
                     </button>
@@ -121,12 +121,12 @@ export default function CartSummary() {
                 ))}
               </ul>
 
-              <div className="text-gray-800 font-bold mb-4">
+              <div className="mb-4 font-bold text-gray-800">
                 Total : {total}€
               </div>
               <button
                 onClick={resetCart}
-                className="w-full bg-red-500 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition-colors"
+                className="w-full rounded-lg bg-red-500 px-4 py-2 text-white transition-colors hover:bg-red-600"
               >
                 Réinitialiser
               </button>

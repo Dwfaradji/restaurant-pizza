@@ -11,10 +11,10 @@ const CalorieProgress = ({ calories, maxCalories }: CalorieProgressProps) => {
   const circumference = 2 * Math.PI * radius; // Périmètre du cercle
 
   return (
-    <div className="relative w-28 h-28">
+    <div className="relative size-28">
       {/* SVG du cercle */}
       <svg
-        className="w-full h-full"
+        className="size-full"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
       >

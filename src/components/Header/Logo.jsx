@@ -4,17 +4,17 @@ import profileImg from '../../images/pexels-nano-erdozain-120534369-29039071.jpg
 
 const Logo = () => {
   return (
-    <Link href="/" className="flex items-center text-dark dark:text-light">
-      <div className=" w-12 md:w-16 rounded-full overflow-hidden border border-solid border-dark dark:border-gray  mr-2 md:mr-4">
+    <Link href="/" className="text-dark dark:text-light flex items-center">
+      <div className="border-dark dark:border-gray mr-2 w-12 overflow-hidden rounded-full border border-solid md:mr-4 md:w-16">
         <Image
           src={profileImg}
           alt="CodeBucks logo"
-          className="w-full h-auto rounded-full"
+          className="h-auto w-full rounded-full"
           sizes="20vw"
           priority
         />
       </div>
-      <span className="font-bold dark:font-semibold text-lg md:text-xl hidden sm:flex">
+      <span className="hidden text-lg font-bold dark:font-semibold sm:flex md:text-xl">
         Étoile Normande
       </span>
     </Link>

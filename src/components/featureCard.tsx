@@ -10,8 +10,8 @@ const FeatureCard = ({ icon, title, description }: FeatureCardProps) => {
   return (
     <div className="flex flex-col items-center text-center">
       <div className="text-6xl">{icon}</div>
-      <h3 className="text-2xl font-bold mt-4">{title}</h3>
-      <p className="text-gray-200 mt-2">{description}</p>
+      <h3 className="mt-4 text-2xl font-bold">{title}</h3>
+      <p className="mt-2 text-gray-200">{description}</p>
     </div>
   );
 };

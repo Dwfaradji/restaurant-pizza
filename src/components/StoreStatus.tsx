@@ -58,14 +58,14 @@ const StoreStatus: React.FC = () => {
   }, []);
 
   return (
-    <div className=" flex flex-col items-center justify-center py-4 top-2">
+    <div className="top-2 flex flex-col items-center justify-center py-4">
       <div
-        className={`rounded-3xl w-4 h-4 text-white font-bold shadow-md ${
+        className={`size-4 rounded-3xl font-bold text-white shadow-md ${
           isOpen ? 'bg-green-500' : 'bg-red-500'
         }`}
       ></div>
       <div className={'sm:hidden'}>{isOpen ? 'Ouvert' : 'Fermé'}</div>
-      <p className="mt-4 text-gray-600 hidden sm:flex">
+      <p className="mt-4 hidden text-gray-600 sm:flex">
         {isOpen
           ? `Nous sommes ouverts jusqu'à ${storeHours[currentDay as keyof typeof storeHours]?.close}.`
           : storeHours[currentDay as keyof typeof storeHours]?.open

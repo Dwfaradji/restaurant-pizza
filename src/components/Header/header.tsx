@@ -36,37 +36,37 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full p-1 flex items-center justify-between">
+    <header className="flex w-full items-center justify-between p-1">
       <Logo />
 
       {/* Bouton Hamburger */}
       <button
-        className="inline-block sm:hidden z-50"
+        className="z-50 inline-block sm:hidden"
         onClick={toggleMenu}
         aria-label="Hamburger Menu"
       >
-        <div className="w-6 cursor-pointer transition-all ease duration-300">
+        <div className="ease w-6 cursor-pointer transition-all duration-300">
           <div className="relative">
             <span
               className={cx(
-                'absolute top-0 inline-block w-full h-0.5 bg-dark dark:bg-light rounded transition-all ease duration-200',
+                'bg-dark dark:bg-light ease absolute top-0 inline-block h-0.5 w-full rounded transition-all duration-200',
                 click
-                  ? 'rotate-[-45deg] translate-y-0'
-                  : 'rotate-0 translate-y-[6px]'
+                  ? 'translate-y-0 rotate-[-45deg]'
+                  : 'translate-y-[6px] rotate-0'
               )}
             ></span>
             <span
               className={cx(
-                'absolute top-0 inline-block w-full h-0.5 bg-dark dark:bg-light rounded transition-all ease duration-200',
+                'bg-dark dark:bg-light ease absolute top-0 inline-block h-0.5 w-full rounded transition-all duration-200',
                 click ? 'opacity-0' : 'opacity-100'
               )}
             ></span>
             <span
               className={cx(
-                'absolute top-0 inline-block w-full h-0.5 bg-dark dark:bg-light rounded transition-all ease duration-200',
+                'bg-dark dark:bg-light ease absolute top-0 inline-block h-0.5 w-full rounded transition-all duration-200',
                 click
-                  ? 'rotate-[45deg] translate-y-0'
-                  : 'rotate-0 translate-y-[-6px]'
+                  ? 'translate-y-0 rotate-[45deg]'
+                  : 'translate-y-[-6px] rotate-0'
               )}
             ></span>
           </div>
@@ -76,7 +76,7 @@ const Header = () => {
       {/* Navigation Mobile */}
       <nav
         className={cx(
-          'w-max py-3 px-6 sm:px-8 border border-solid border-dark rounded-full font-medium capitalize items-center flex sm:hidden fixed top-4 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50 transition-all ease duration-300',
+          'border-dark bg-light/80 ease fixed right-1/2 top-4 z-50 flex w-max translate-x-1/2 items-center rounded-full border border-solid px-6 py-3 font-medium capitalize backdrop-blur-sm transition-all duration-300 sm:hidden sm:px-8',
           click ? 'top-6' : '-top-20'
         )}
       >
@@ -92,7 +92,7 @@ const Header = () => {
         <button
           onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
           className={cx(
-            'w-6 h-6 ease ml-2 flex items-center justify-center rounded-full p-1',
+            'ease ml-2 flex h-6 w-6 items-center justify-center rounded-full p-1',
             mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'
           )}
           aria-label="theme-switcher"
@@ -106,7 +106,7 @@ const Header = () => {
       </nav>
 
       {/* Navigation Desktop */}
-      <nav className="w-max py-3 px-8 border border-solid border-dark rounded-full font-medium capitalize items-center hidden sm:flex fixed top-6 right-1/2 translate-x-1/2 bg-light/80 backdrop-blur-sm z-50">
+      <nav className="border-dark bg-light/80 fixed right-1/2 top-6 z-50 hidden w-max translate-x-1/2 items-center rounded-full border border-solid px-8 py-3 font-medium capitalize backdrop-blur-sm sm:flex">
         <Link href="/" className="mr-2">
           Accueil
         </Link>
@@ -119,7 +119,7 @@ const Header = () => {
         <button
           onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
           className={cx(
-            'w-6 h-6 ease ml-2 flex items-center justify-center rounded-full p-1',
+            'ease ml-2 flex h-6 w-6 items-center justify-center rounded-full p-1',
             mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'
           )}
           aria-label="theme-switcher"

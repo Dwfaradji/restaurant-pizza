@@ -18,8 +18,8 @@ const Page = () => {
   return (
     <div>
       <Suspense fallback={<div>Chargement des pizzas...</div>}>
-        <div className="w-full bg-gray-50 py-8 px-4">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
+        <div className="w-full bg-gray-50 px-4 py-8">
+          <h2 className="mb-6 text-center text-3xl font-bold text-gray-800">
             Commandez vos pizzas
           </h2>
           <ButtonFilter

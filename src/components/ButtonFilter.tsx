@@ -25,12 +25,12 @@ const ButtonFilter = ({
   };
 
   return (
-    <div className="flex justify-center space-x-4 mb-6">
+    <div className="mb-6 flex justify-center space-x-4">
       {[name1, name2, name3].map((btn) => (
         <button
           key={btn}
           onClick={() => handleClick(btn)}
-          className={`py-2 px-4 rounded-lg shadow ${
+          className={`rounded-lg px-4 py-2 shadow ${
             filter === btn
               ? btn === name1
                 ? 'bg-orange-500 text-white'
