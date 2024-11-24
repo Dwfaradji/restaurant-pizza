@@ -17,11 +17,12 @@ const CategoryCard = ({
   description,
   base,
 }: CategoryCardProps) => {
+  console.log(href + base);
+
   return (
     <Link
       href={{
-        pathname: href,
-        query: { base }, // Passe la base dans la query
+        pathname: href + base,
       }}
       className="group block relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-all bg-white"
     >

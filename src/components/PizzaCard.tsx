@@ -1,5 +1,4 @@
-// components/PizzaCard.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Pizza } from '@/data/pizzas';
 import Link from 'next/link';
@@ -11,10 +10,32 @@ interface PizzaCardProps {
 }
 
 const PizzaCard = ({ pizza }: PizzaCardProps) => {
+  // États pour stocker la taille sélectionnée et son prix
+  const [selectedSize, setSelectedSize] = useState<'petite' | 'grande'>(
+    'petite'
+  );
+  const [updatePrice, setUpdatePrice] = useState<number>(pizza.price.petite);
+
   const { addPizza } = useCart(); // Accéder à la fonction d'ajout au panier
+
+  // Gérer le changement de taille
+  const handleSizeChange = (size: 'petite' | 'grande') => {
+    setSelectedSize(size);
+    setUpdatePrice(pizza.price[size]); // Met à jour le prix affiché
+  };
+
+  // Ajouter une pizza au panier avec la taille sélectionnée
+  const handleAddPizza = () => {
+    addPizza({
+      ...pizza, // Toutes les données de la pizza
+      selectedSize,
+      quantity: 1,
+    });
+  };
+
   return (
     <div className="relative bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer">
-      <Link key={pizza.slug} href={`/pizzas-list/${pizza.slug}`}>
+      <Link key={pizza.slug} href={`/pizzas-details/${pizza.slug}`}>
         <Image
           src={pizza.image}
           alt={pizza.title}
@@ -25,17 +46,45 @@ const PizzaCard = ({ pizza }: PizzaCardProps) => {
         <div className="p-4">
           <h3 className="text-lg font-semibold text-gray-800">{pizza.title}</h3>
           <p className="text-sm text-gray-600 truncate">{pizza.description}</p>
-          <p className="text-sm font-semibold text-orange-500 mt-2">
-            {pizza.price}€
-          </p>
         </div>
       </Link>
-      <button
-        onClick={() => addPizza(pizza)} // Ajouter la pizza au panier
-        className="inline-block px-8 absolute top-0 right-0 py-3 bg-orange-500 text-white font-bold rounded-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition-transform"
-      >
-        <PlusCircleIcon className="w-5 h-5" />
-      </button>
+      <div className="flex justify-between items-center px-4 py-2">
+        {/* Boutons pour changer de taille */}
+        <div className="flex space-x-2">
+          <button
+            onClick={() => handleSizeChange('petite')}
+            className={`px-4 py-2 rounded-lg font-bold ${
+              selectedSize === 'petite'
+                ? 'bg-orange-500 text-white'
+                : 'bg-gray-200 text-gray-700'
+            }`}
+          >
+            Petite
+          </button>
+          <button
+            onClick={() => handleSizeChange('grande')}
+            className={`px-4 py-2 rounded-lg font-bold ${
+              selectedSize === 'grande'
+                ? 'bg-orange-500 text-white'
+                : 'bg-gray-200 text-gray-700'
+            }`}
+          >
+            Grande
+          </button>
+        </div>
+        {/* Afficher le prix en fonction de la taille sélectionnée */}
+        <p className="text-lg font-semibold text-gray-800 ">
+          Prix : {updatePrice}€
+        </p>
+
+        {/* Bouton pour ajouter au panier */}
+        <button
+          onClick={handleAddPizza}
+          className="absolute top-0 right-0 px-6 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition-colors"
+        >
+          <PlusCircleIcon className="w-5 h-5" />
+        </button>
+      </div>
     </div>
   );
 };

@@ -83,7 +83,7 @@ const Header = () => {
         <Link href="/" className="mr-2">
           Accueil
         </Link>
-        <Link href="/pizzas-list" className="mx-2">
+        <Link href="/pizzas-list/toutes" className="mx-2">
           Carte
         </Link>
         <Link href="/contact" className="mx-2">
@@ -110,7 +110,7 @@ const Header = () => {
         <Link href="/" className="mr-2">
           Accueil
         </Link>
-        <Link href="/pizzas-list" className="mx-2">
+        <Link href="/pizzas-list/toutes" className="mx-2">
           Carte
         </Link>
         <Link href="/contact" className="mx-2">

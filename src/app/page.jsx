@@ -24,7 +24,7 @@ export default function Home() {
                 frais et un savoir-faire artisanal.
               </p>
               <Link
-                href="/pizzas-list"
+                href="/pizzas-list/Toutes"
                 className="inline-block mt-8 px-8 py-4 bg-orange-500 text-white text-lg font-medium rounded-full shadow-lg hover:shadow-xl hover:bg-orange-600 transition-all"
               >
                 Voir le menu
@@ -56,25 +56,25 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {/* Carte Tomate */}
             <CategoryCard
-              href="/pizzas-list"
+              href="/pizzas-list/"
               image="/images/category-tomate-premium.jpg"
               title="Base Tomate"
               description="Des pizzas authentiques à la tomate fraîche."
-              base="Tomate"
+              base="tomate"
             />
             <CategoryCard
-              href="/pizzas-list"
+              href="/pizzas-list/"
               image="/images/category-creme-premium.jpg"
               title="Base Crème"
               description="Des créations gourmandes et onctueuses."
-              base="Crème fraîche"
+              base="creme-fraiche"
             />
             <CategoryCard
-              href="/pizzas-list"
+              href="/pizzas-list/"
               image="/images/category-all-premium.jpg"
               title="Toutes les Pizzas"
               description="Explorez toute notre gamme."
-              base="Toutes"
+              base="toutes"
             />
           </div>
         </div>

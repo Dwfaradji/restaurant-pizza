@@ -7,6 +7,7 @@ import {
   ChevronUpIcon,
   ShoppingCartIcon,
 } from '@heroicons/react/24/solid';
+import { Pizza } from '@/data/pizzas';
 
 export default function CartSummary() {
   const { selectedPizzas, total, resetCart, removePizza } = useCart();
@@ -16,6 +17,7 @@ export default function CartSummary() {
   type GroupedPizza = {
     slug: string;
     title: string;
+    selectedSize: string; // Taille de la pizza
     price: number;
     quantity: number;
     totalPrice: number;
@@ -24,12 +26,27 @@ export default function CartSummary() {
   // Grouper les pizzas pour éviter les doublons
   const groupedPizzas: GroupedPizza[] = (selectedPizzas || []).reduce(
     (acc: GroupedPizza[], pizza) => {
-      const existing = acc.find((item) => item.slug === pizza.slug);
+      const key = `${pizza.slug}-${pizza.selectedSize.toString()}`;
+      const existing = acc.find(
+        (item) => `${item.slug}-${item.selectedSize}` === key
+      );
+
+      const selectedPrice = pizza.price[pizza.selectedSize]; // Sélectionnez le prix basé sur la taille
       if (existing) {
-        existing.quantity += 1;
-        existing.totalPrice += pizza.price;
+        // Incrémente la quantité avec la quantité réelle
+        existing.quantity += pizza.quantity;
+        // Ajuste le prix total
+        existing.totalPrice += selectedPrice * pizza.quantity;
       } else {
-        acc.push({ ...pizza, quantity: 1, totalPrice: pizza.price });
+        // Ajoute une nouvelle entrée au tableau
+        acc.push({
+          slug: pizza.slug,
+          title: pizza.title,
+          selectedSize: pizza.selectedSize,
+          price: selectedPrice,
+          quantity: pizza.quantity, // Utilise la quantité réelle
+          totalPrice: selectedPrice * pizza.quantity, // Calcule le prix total initial
+        } as GroupedPizza);
       }
       return acc;
     },
@@ -37,7 +54,9 @@ export default function CartSummary() {
   );
 
   return (
-    <div className="fixed bottom-4 left-4 z-50 w-80 max-w-full">
+    <div
+      className={`${total <= 0 ? 'hidden' : 'fixed bottom-4 left-4 z-50 w-80 max-w-full'}`}
+    >
       {/* Résumé du panier */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
@@ -73,19 +92,27 @@ export default function CartSummary() {
               <ul className="text-sm text-gray-600 mb-4">
                 {groupedPizzas.map((pizza) => (
                   <li
-                    key={pizza.slug}
+                    key={`${pizza.slug}-${pizza.selectedSize}`}
                     className="flex justify-between items-center mb-2"
                   >
                     <div>
                       <span className="font-semibold">{pizza.title}</span> -{' '}
                       {pizza.price}€
                       <div className="text-xs text-gray-500">
-                        Quantité : {pizza.quantity} | Total : {pizza.totalPrice}
-                        €
+                        Taille :{' '}
+                        {pizza.selectedSize.charAt(0).toUpperCase() +
+                          pizza.selectedSize.slice(1)}{' '}
+                        | Quantité : {pizza.quantity} | Total :{' '}
+                        {pizza.totalPrice}€
                       </div>
                     </div>
                     <button
-                      onClick={() => removePizza(pizza.slug)}
+                      onClick={() =>
+                        removePizza(
+                          pizza.slug.toString(),
+                          pizza.selectedSize as keyof Pizza['price']
+                        )
+                      }
                       className="text-red-500 text-sm font-bold"
                     >
                       Retirer
@@ -93,6 +120,7 @@ export default function CartSummary() {
                   </li>
                 ))}
               </ul>
+
               <div className="text-gray-800 font-bold mb-4">
                 Total : {total}€
               </div>

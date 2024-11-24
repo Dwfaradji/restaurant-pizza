@@ -1,10 +1,11 @@
-import React, { Suspense } from 'react';
-import PizzasList from '@/components/Pizzas-list';
+import React from 'react';
 
-export default function PizzasPage() {
+const Page = () => {
   return (
-    <Suspense fallback={<div>Chargement des pizzas...</div>}>
-      <PizzasList />
-    </Suspense>
+    <div>
+      <h1>Page</h1>
+    </div>
   );
-}
+};
+
+export default Page;

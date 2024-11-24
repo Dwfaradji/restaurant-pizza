@@ -1,55 +1,118 @@
 'use client';
 
-import { createContext, ReactNode, useContext, useState } from 'react';
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useState,
+  useMemo,
+} from 'react';
 import { Pizza } from '@/data/pizzas';
+// import { toast } from 'react-toastify';
 
-// Définir le type pour le contexte
+// Définir le type pour une pizza dans le panier
+type CartPizza = Pizza & {
+  selectedSize: keyof Pizza['price']; // Correspond à 'grande' | 'petite'
+  quantity: number;
+};
+
+// Définir le type pour le contexte du panier
 type CartContextType = {
-  selectedPizzas: Pizza[];
+  selectedPizzas: CartPizza[];
   total: number;
-  // eslint-disable-next-line no-unused-vars
-  addPizza: (pizza: Pizza) => void;
-  // eslint-disable-next-line no-unused-vars
-  removePizza: (slug: string) => void;
+  addPizza: (pizza: CartPizza) => void;
+  removePizza: (slug: string, selectedSize: keyof Pizza['price']) => void;
   resetCart: () => void;
 };
 
-// Initialiser le contexte avec un typage correct
+// Initialiser le contexte
 const CartContext = createContext<CartContextType | null>(null);
 
 // Fournisseur du contexte
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [selectedPizzas, setSelectedPizzas] = useState<Pizza[]>([]);
+  const [selectedPizzas, setSelectedPizzas] = useState<CartPizza[]>([]);
 
-  // Calculer le total
-  const total = selectedPizzas.reduce((acc, pizza) => acc + pizza.price, 0);
+  // Calcul optimisé du total
+  const total = useMemo(() => {
+    return selectedPizzas.reduce(
+      (sum, pizza) => sum + pizza.price[pizza.selectedSize] * pizza.quantity,
+      0
+    );
+  }, [selectedPizzas]);
 
   // Ajouter une pizza au panier
-  const addPizza = (pizza: Pizza) => {
-    setSelectedPizzas((prev) => [...prev, pizza]);
+  const addPizza = (pizza: CartPizza) => {
+    setSelectedPizzas((prev) => {
+      const index = prev.findIndex(
+        (p) => p.slug === pizza.slug && p.selectedSize === pizza.selectedSize
+      );
+
+      if (index !== -1) {
+        // Si la pizza existe, incrémente la quantité
+        const updated = [...prev];
+        updated[index] = {
+          ...updated[index],
+          quantity: updated[index].quantity + 1,
+        };
+        return updated;
+      } else {
+        // Sinon, ajoute la pizza avec une quantité initiale de 1
+        return [...prev, { ...pizza, quantity: 1 }];
+      }
+    });
+    // toast.success(`${pizza.title} ajoutée au panier !`);
   };
 
-  // Retirer une pizza spécifique (une instance)
-  const removePizza = (slug: string) => {
+  // Retirer une pizza du panier
+  const removePizza = (slug: string, selectedSize: keyof Pizza['price']) => {
+    if (!['petite', 'grande'].includes(selectedSize)) {
+      // toast.error('Taille invalide !');
+      return;
+    }
+
     setSelectedPizzas((prev) => {
-      const index = prev.findIndex((pizza) => pizza.slug === slug);
+      const index = prev.findIndex(
+        (pizza) => pizza.slug === slug && pizza.selectedSize === selectedSize
+      );
+
       if (index !== -1) {
-        const updated = [...prev];
-        updated.splice(index, 1);
-        return updated;
+        const pizzaToRemove = prev[index];
+
+        if (pizzaToRemove.quantity > 1) {
+          const updated = [...prev];
+          updated[index] = {
+            ...pizzaToRemove,
+            quantity: pizzaToRemove.quantity - 1,
+          };
+          return updated;
+        } else {
+          const updated = [...prev];
+          updated.splice(index, 1);
+          return updated;
+        }
       }
+
+      // toast.error('Pizza non trouvée pour suppression !');
       return prev;
     });
+    // toast.info('Pizza retirée du panier.');
   };
 
   // Réinitialiser le panier
   const resetCart = () => {
     setSelectedPizzas([]);
+    // toast.success('Le panier a été réinitialisé.');
   };
 
   return (
     <CartContext.Provider
-      value={{ selectedPizzas, total, addPizza, removePizza, resetCart }}
+      value={{
+        selectedPizzas,
+        total,
+        addPizza,
+        removePizza,
+        resetCart,
+      }}
     >
       {children}
     </CartContext.Provider>
@@ -60,6 +123,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {
+    // toast.error('Erreur : Le panier est inaccessible.');
     throw new Error('useCart must be used within a CartProvider');
   }
   return context;

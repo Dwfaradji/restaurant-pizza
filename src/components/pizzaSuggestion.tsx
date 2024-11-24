@@ -30,7 +30,7 @@ export default function PizzaSuggestions({ base }: { base: string }) {
           {pizzas.concat(pizzas).map((pizza, index) => (
             <Link
               key={`${pizza.slug}-${index}`}
-              href={`/pizzas-list/${pizza.slug}`} // Lien vers les détails de la pizza
+              href={`/pizzas-details/${pizza.slug}`} // Lien vers les détails de la pizza
               className="flex-shrink-0 bg-white rounded-lg shadow-lg overflow-hidden w-72 mx-3"
             >
               <Image
@@ -48,7 +48,7 @@ export default function PizzaSuggestions({ base }: { base: string }) {
                   {pizza.description}
                 </p>
                 <p className="text-sm font-semibold text-orange-500 mt-2">
-                  {pizza.price}€
+                  {pizza.price.petite}€
                 </p>
               </div>
             </Link>

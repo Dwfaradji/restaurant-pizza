@@ -17,7 +17,7 @@ export type Pizza = {
   id: number;
   slug: string;
   title: string;
-  price: number;
+  price: { grande: number; petite: number };
   image: StaticImageData;
   description: string;
   rating: number;
@@ -27,6 +27,7 @@ export type Pizza = {
   review: string;
   nutrition: Nutrition;
   options: PizzaOptions;
+  selectedSize?: 'grande' | 'petite'; // Restreindre les tailles possibles
 };
 
 const cardTomate: Pizza[] = [
@@ -34,7 +35,7 @@ const cardTomate: Pizza[] = [
     id: 1,
     slug: 'margherita',
     title: 'Pizza Margherita',
-    price: 10,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       "Une pizzas classique napolitaine avec une pâte fine et croustillante, garnie de mozzarella fraîche, de basilic, et d'une sauce tomate riche.",
@@ -60,7 +61,7 @@ const cardTomate: Pizza[] = [
     id: 2,
     slug: 'pepperoni',
     title: 'Pizza Pepperoni',
-    price: 12,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       "Une pizzas épicée garnie de pepperoni savoureux, de mozzarella, et d'une sauce tomate.",
@@ -85,7 +86,7 @@ const cardTomate: Pizza[] = [
     id: 3,
     slug: 'veggieSupreme',
     title: 'Pizza Veggie Suprême',
-    price: 11,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       "Une pizzas pour les amoureux des légumes, garnie de tomates fraîches, poivrons, oignons, olives, champignons et d'une sauce tomate.",
@@ -111,7 +112,7 @@ const cardTomate: Pizza[] = [
     id: 4,
     slug: 'pouletBBQ',
     title: 'Pizza Poulet BBQ',
-    price: 13,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       "Une pizzas avec une base de sauce BBQ, garnie de poulet grillé, d'oignons rouges, de mozzarella, et d'une touche de sauce tomate.",
@@ -137,7 +138,7 @@ const cardTomate: Pizza[] = [
     id: 5,
     slug: 'quattroStagioni',
     title: 'Pizza Quattro Stagioni',
-    price: 14,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       'Une délicieuse combinaison de quatre ingrédients de saison : champignons, olives, jambon et artichauts, le tout sur une base de sauce tomate.',
@@ -166,7 +167,7 @@ const cardCream: Pizza[] = [
     id: 6,
     slug: 'cremeBacon',
     title: 'Pizza Crème Bacon',
-    price: 12,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       "Une pizzas riche et crémeuse garnie de bacon croustillant, de champignons, de mozzarella, et d'une base de crème fraîche.",
@@ -191,7 +192,7 @@ const cardCream: Pizza[] = [
     id: 7,
     slug: 'carbonara',
     title: 'Pizza Carbonara',
-    price: 13,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       'Inspirée du plat classique, cette pizzas combine une base crémeuse, du pancetta et une touche de parmesan.',
@@ -217,7 +218,7 @@ const cardCream: Pizza[] = [
     id: 8,
     slug: 'pouletChampignons',
     title: 'Pizza Poulet Champignons',
-    price: 11,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       'Une pizzas savoureuse avec une base crémeuse, garnie de poulet grillé, de champignons, de mozzarella, et une touche de thym.',
@@ -243,7 +244,7 @@ const cardCream: Pizza[] = [
     id: 9,
     slug: 'fourFromagesCreme',
     title: 'Pizza 4 Fromages Crème',
-    price: 14,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       'Une pizzas crémeuse garnie de quatre fromages : mozzarella, fromage de chèvre, gorgonzola et parmesan.',
@@ -269,7 +270,7 @@ const cardCream: Pizza[] = [
     id: 10,
     slug: 'saumonEtAneth',
     title: 'Pizza Saumon et Aneth',
-    price: 15,
+    price: { petite: 10, grande: 12 },
     image: images,
     description:
       "Une pizzas crémeuse garnie de saumon fumé, d'aneth frais, de mozzarella, et d'un peu de citron pour une touche rafraîchissante.",
