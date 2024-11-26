@@ -4,8 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import imagesHeader from '@/images/pexels-nano-erdozain-120534369-29021737.jpg';
-import CategoryCard from '../components/categoryCard';
-import About from '../components/about';
+import CategoryCard from '../components/CategoryCard';
+import About from '../components/About';
 
 export default function Home() {
   return (
@@ -24,7 +24,7 @@ export default function Home() {
                 frais et un savoir-faire artisanal.
               </p>
               <Link
-                href="/pizzas-list/Toutes"
+                href="/pizzas-list/toutes"
                 className="mt-8 inline-block rounded-full bg-orange-500 px-8 py-4 text-lg font-medium text-white shadow-lg transition-all hover:bg-orange-600 hover:shadow-xl"
               >
                 Voir le menu

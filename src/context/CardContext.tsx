@@ -7,8 +7,7 @@ import React, {
   useState,
   useMemo,
 } from 'react';
-import { Pizza } from '@/data/pizzas';
-// import { toast } from 'react-toastify';
+import { Pizza } from '@/data/type';
 
 // Définir le type pour une pizza dans le panier
 type CartPizza = Pizza & {
@@ -62,13 +61,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
         return [...prev, { ...pizza, quantity: 1 }];
       }
     });
-    // toast.success(`${pizza.title} ajoutée au panier !`);
   };
 
   // Retirer une pizza du panier
   const removePizza = (slug: string, selectedSize: keyof Pizza['price']) => {
     if (!['petite', 'grande'].includes(selectedSize)) {
-      // toast.error('Taille invalide !');
       return;
     }
 
@@ -93,17 +90,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
           return updated;
         }
       }
-
-      // toast.error('Pizza non trouvée pour suppression !');
       return prev;
     });
-    // toast.info('Pizza retirée du panier.');
   };
 
   // Réinitialiser le panier
   const resetCart = () => {
     setSelectedPizzas([]);
-    // toast.success('Le panier a été réinitialisé.');
   };
 
   return (
@@ -125,7 +118,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {
-    // toast.error('Erreur : Le panier est inaccessible.');
     throw new Error('useCart must be used within a CartProvider');
   }
   return context;

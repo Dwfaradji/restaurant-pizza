@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import Header from '@/components/Header/header';
-import Footer from '@/components/footer';
+import Footer from '@/components/Footer';
 import { CartProvider } from '@/context/CardContext';
 import CartSummary from '@/components/CartSummary';
 import React from 'react';

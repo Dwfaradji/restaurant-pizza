@@ -1,6 +1,6 @@
 'use client';
 
-import { Pizza, allPizzas } from '@/data/pizzas';
+import { allPizzas } from '@/data/pizzas';
 import Image from 'next/image';
 import PizzaSuggestions from '@/components/pizzaSuggestion';
 import Link from 'next/link';
@@ -9,6 +9,7 @@ import { useCart } from '@/context/CardContext';
 import { useParams } from 'next/navigation';
 import { PlusCircleIcon, ArrowLeftCircleIcon } from '@heroicons/react/24/solid';
 import CalorieProgress from '@/components/CalorieProgress';
+import { Pizza } from '@/data/type';
 
 export default function PizzaDetails() {
   // States

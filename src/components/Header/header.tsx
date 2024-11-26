@@ -3,15 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Logo from './Logo';
-import {
-  // DribbbleIcon,
-  // GithubIcon,
-  // LinkedinIcon,
-  MoonIcon,
-  SunIcon,
-  // TwitterIcon,
-} from '../Icons';
-// import siteMetadata from '@/utils/siteMetaData';
+import { MoonIcon, SunIcon } from '../Icons';
 import { useThemeSwitch } from '@/Hooks/useThemeSwitch';
 import { cx } from '@/utils';
 import StoreStatus from '@/components/StoreStatus';
@@ -38,7 +30,6 @@ const Header = () => {
   return (
     <header className="flex w-full items-center justify-between p-1">
       <Logo />
-
       {/* Bouton Hamburger */}
       <button
         className="z-50 inline-block sm:hidden"
@@ -49,7 +40,7 @@ const Header = () => {
           <div className="relative">
             <span
               className={cx(
-                'bg-dark dark:bg-light ease absolute top-0 inline-block h-0.5 w-full rounded transition-all duration-200',
+                'ease absolute top-0 inline-block h-0.5 w-full rounded bg-dark transition-all duration-200 dark:bg-light',
                 click
                   ? 'translate-y-0 rotate-[-45deg]'
                   : 'translate-y-[6px] rotate-0'
@@ -57,13 +48,13 @@ const Header = () => {
             ></span>
             <span
               className={cx(
-                'bg-dark dark:bg-light ease absolute top-0 inline-block h-0.5 w-full rounded transition-all duration-200',
+                'ease absolute top-0 inline-block h-0.5 w-full rounded bg-dark transition-all duration-200 dark:bg-light',
                 click ? 'opacity-0' : 'opacity-100'
               )}
             ></span>
             <span
               className={cx(
-                'bg-dark dark:bg-light ease absolute top-0 inline-block h-0.5 w-full rounded transition-all duration-200',
+                'ease absolute top-0 inline-block h-0.5 w-full rounded bg-dark transition-all duration-200 dark:bg-light',
                 click
                   ? 'translate-y-0 rotate-[45deg]'
                   : 'translate-y-[-6px] rotate-0'
@@ -72,11 +63,10 @@ const Header = () => {
           </div>
         </div>
       </button>
-
       {/* Navigation Mobile */}
       <nav
         className={cx(
-          'border-dark bg-light/80 ease fixed right-1/2 top-4 z-50 flex w-max translate-x-1/2 items-center rounded-full border border-solid px-6 py-3 font-medium capitalize backdrop-blur-sm transition-all duration-300 sm:hidden sm:px-8',
+          'ease fixed right-1/2 top-4 z-50 flex w-max translate-x-1/2 items-center rounded-full border border-solid border-dark bg-light/80 px-6 py-3 font-medium capitalize backdrop-blur-sm transition-all duration-300 sm:hidden sm:px-8',
           click ? 'top-6' : '-top-20'
         )}
       >
@@ -104,9 +94,8 @@ const Header = () => {
           )}
         </button>
       </nav>
-
-      {/* Navigation Desktop */}
-      <nav className="border-dark bg-light/80 fixed right-1/2 top-6 z-50 hidden w-max translate-x-1/2 items-center rounded-full border border-solid px-8 py-3 font-medium capitalize backdrop-blur-sm sm:flex">
+      s{/* Navigation Desktop */}
+      <nav className="fixed right-1/2 top-6 z-50 hidden w-max translate-x-1/2 items-center rounded-full border border-solid border-dark bg-light/30 px-8 py-3 font-medium capitalize backdrop-blur-xl sm:flex">
         <Link href="/" className="mr-2">
           Accueil
         </Link>
@@ -134,34 +123,6 @@ const Header = () => {
       <div className="flex items-center">
         <StoreStatus />
       </div>
-      {/* Réseaux Sociaux */}
-      {/*<div className="hidden sm:flex items-center">*/}
-      {/*  {[*/}
-      {/*    {*/}
-      {/*      href: siteMetadata.linkedin,*/}
-      {/*      label: 'LinkedIn',*/}
-      {/*      icon: LinkedinIcon,*/}
-      {/*    },*/}
-      {/*    { href: siteMetadata.twitter, label: 'Twitter', icon: TwitterIcon },*/}
-      {/*    { href: siteMetadata.github, label: 'GitHub', icon: GithubIcon },*/}
-      {/*    {*/}
-      {/*      href: siteMetadata.dribbble,*/}
-      {/*      label: 'Dribbble',*/}
-      {/*      icon: DribbbleIcon,*/}
-      {/*    },*/}
-      {/*  ].map(({ href, label, icon: Icon }) => (*/}
-      {/*    <a*/}
-      {/*      key={label}*/}
-      {/*      href={href}*/}
-      {/*      rel="noopener noreferrer"*/}
-      {/*      className="inline-block w-6 h-6 mr-4"*/}
-      {/*      aria-label={`Reach out to me via ${label}`}*/}
-      {/*      target="_blank"*/}
-      {/*    >*/}
-      {/*      <Icon className="hover:scale-125 transition-all ease duration-200" />*/}
-      {/*    </a>*/}
-      {/*  ))}*/}
-      {/*</div>*/}
     </header>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import PizzaCard from '@/components/PizzaCard';
-import { Pizza } from '@/data/pizzas';
+import { Pizza } from '@/data/type';
 
 interface PizzasListProps {
   allPizzas: Pizza[];

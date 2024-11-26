@@ -7,7 +7,7 @@ import {
   ChevronUpIcon,
   ShoppingCartIcon,
 } from '@heroicons/react/24/solid';
-import { Pizza } from '@/data/pizzas';
+import { Pizza } from '@/data/type';
 
 export default function CartSummary() {
   const { selectedPizzas, total, resetCart, removePizza } = useCart();

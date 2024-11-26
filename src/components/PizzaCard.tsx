@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Pizza } from '@/data/pizzas';
 import Link from 'next/link';
 import { useCart } from '@/context/CardContext';
 import { PlusCircleIcon } from '@heroicons/react/24/solid';
+import { Pizza } from '@/data/type';
 
 interface PizzaCardProps {
   pizza: Pizza;
