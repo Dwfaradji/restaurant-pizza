@@ -4,7 +4,10 @@ import profileImg from '../../images/pexels-nano-erdozain-120534369-29039071.jpg
 
 const Logo = () => {
   return (
-    <Link href="/" className="flex items-center text-dark dark:text-light">
+    <Link
+      href="/"
+      className="flex items-center text-dark text-light dark:text-dark"
+    >
       <div className="mr-2 w-12 overflow-hidden rounded-full border border-solid border-dark md:mr-4 md:w-16">
         <Image
           src={profileImg}

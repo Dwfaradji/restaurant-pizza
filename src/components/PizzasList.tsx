@@ -22,7 +22,7 @@ export default function PizzasList({
   });
 
   return (
-    <div className="w-full bg-gray-50 px-4 py-8">
+    <div className="w-full bg-dark px-4 py-8 dark:bg-gray-50">
       {/* Affichage des pizzas filtrées */}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredPizzas.map((pizza) => (

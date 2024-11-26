@@ -28,8 +28,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 px-4 py-10">
-      <h1 className="mb-6 text-center text-4xl font-bold text-gray-800">
+    <div className="min-h-screen bg-dark px-4 py-10 dark:bg-gray-50">
+      <h1 className="mb-6 text-center text-4xl font-bold text-white dark:text-gray-800">
         Contactez-nous
       </h1>
 

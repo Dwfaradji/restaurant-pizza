@@ -28,45 +28,12 @@ const Header = () => {
   };
 
   return (
-    <header className="flex w-full items-center justify-between p-1">
+    <header className="flex w-full items-center justify-between bg-black p-1 dark:bg-light">
       <Logo />
-      {/* Bouton Hamburger */}
-      <button
-        className="z-50 inline-block sm:hidden"
-        onClick={toggleMenu}
-        aria-label="Hamburger Menu"
-      >
-        <div className="ease w-6 cursor-pointer transition-all duration-300">
-          <div className="relative">
-            <span
-              className={cx(
-                'ease absolute top-0 inline-block h-0.5 w-full rounded bg-dark transition-all duration-200 dark:bg-light',
-                click
-                  ? 'translate-y-0 rotate-[-45deg]'
-                  : 'translate-y-[6px] rotate-0'
-              )}
-            ></span>
-            <span
-              className={cx(
-                'ease absolute top-0 inline-block h-0.5 w-full rounded bg-dark transition-all duration-200 dark:bg-light',
-                click ? 'opacity-0' : 'opacity-100'
-              )}
-            ></span>
-            <span
-              className={cx(
-                'ease absolute top-0 inline-block h-0.5 w-full rounded bg-dark transition-all duration-200 dark:bg-light',
-                click
-                  ? 'translate-y-0 rotate-[45deg]'
-                  : 'translate-y-[-6px] rotate-0'
-              )}
-            ></span>
-          </div>
-        </div>
-      </button>
       {/* Navigation Mobile */}
       <nav
         className={cx(
-          'ease fixed right-1/2 top-4 z-50 flex w-max translate-x-1/2 items-center rounded-full border border-solid border-dark bg-light/80 px-6 py-3 font-medium capitalize backdrop-blur-sm transition-all duration-300 sm:hidden sm:px-8',
+          'ease fixed right-1/2 top-4 z-50 flex w-max translate-x-1/2 items-center rounded-full border border-solid border-dark bg-light/80 px-6 py-3 font-medium capitalize text-gray-800 backdrop-blur-sm transition-all duration-300 dark:text-dark sm:hidden sm:px-8',
           click ? 'top-6' : '-top-20'
         )}
       >
@@ -94,8 +61,8 @@ const Header = () => {
           )}
         </button>
       </nav>
-      s{/* Navigation Desktop */}
-      <nav className="fixed right-1/2 top-6 z-50 hidden w-max translate-x-1/2 items-center rounded-full border border-solid border-dark bg-light/30 px-8 py-3 font-medium capitalize backdrop-blur-xl sm:flex">
+      {/* Navigation Desktop */}
+      <nav className="fixed right-1/2 top-6 z-50 hidden w-max translate-x-1/2 items-center rounded-full border border-solid border-dark bg-light/65 px-8 py-3 font-medium capitalize text-gray-800 backdrop-blur-xl dark:text-dark sm:flex">
         <Link href="/" className="mr-2">
           Accueil
         </Link>

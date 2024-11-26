@@ -9,7 +9,7 @@ import About from '../components/About';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-orange-100 font-sans">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-orange-100 font-sans dark:bg-dark dark:text-light">
       {/* Hero Section */}
       <header className="relative">
         <div className="container mx-auto px-6 py-20 text-center md:text-left">

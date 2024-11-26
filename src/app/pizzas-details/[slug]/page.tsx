@@ -57,7 +57,7 @@ export default function PizzaDetails() {
   if (!pizza) {
     return (
       <div className="flex h-screen flex-col items-center justify-center bg-gradient-to-br from-red-500 to-orange-500 text-white">
-        <h1 className="mb-4 text-5xl font-extrabold">Pizza introuvable</h1>
+        <h1 className="mb-4 text-5xl font-extrabold">Loading...</h1>
         <p className="text-lg opacity-90">
           {"La pizza que vous recherchez est introuvable ou n'existe plus."}
         </p>
@@ -83,7 +83,7 @@ export default function PizzaDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-100 py-10">
+    <div className="min-h-screen bg-dark from-gray-50 via-white to-gray-100 py-10 dark:bg-gradient-to-br">
       {/* Carte principale */}
       <div className="container mx-auto max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl transition-transform duration-300 hover:scale-[1.02]">
         {/* Image */}
